@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Child Page</title>
+  </head>
+  <body>
+    <h1>Here is child page</h1>
+    <div id="email"></div>
+    <div id="src"></div>
+
+    <script>
+      window.addEventListener("message", msgHandler,true);
+
+      function msgHandler(event) {
+          debugger;
+          document.getElementById("src").innerHTML = event.origin;
+        console.log("inside child page msgHandler fun");
+        
+        if (event.origin == "http://127.0.0.1:5500") {
+          console.log("inside if");
+          document.getElementById("email").innerHTML += event.data;
+        //   document.write("You are logged in as " + event.data);
+        }
+      }
+
+    </script>
+  </body>
+</html>
+
